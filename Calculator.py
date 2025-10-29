@@ -83,7 +83,9 @@ def button_clicked(value):
                     label["text"] = remove_zero_decimal(numA * numB)
                 elif operator == "÷":
                     label["text"] = remove_zero_decimal(numA / numB)
-                
+                #elif operator == "√":
+                    #label["text"] = remove_zero_decimal(math.sqrt(numA))
+                #Trying to implement square root above^^^
                 clear_all()
 
         elif value in "+-×÷": #500 +, *
@@ -133,5 +135,6 @@ window_y = int((screen_height/2) - (window_height/2))
 
 #format
 window.geometry(f"{window_width}x{window_height}+{window_x}+{window_y}")
+
 
 window.mainloop()
