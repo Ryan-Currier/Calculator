@@ -1,4 +1,5 @@
 import tkinter 
+import math
 
 button_values = [
     ["AC", "+/-", "%", "÷"], 
@@ -9,7 +10,7 @@ button_values = [
 ]
 
 right_symbols = ["÷", "×", "-", "+", "="]
-top_symbols = ["AC", "+/-", "%"]
+top_symbols = ["AC", "+/-", "%", "√"]
 
 row_count = len(button_values) #5
 column_count = len(button_values[0]) #4
@@ -83,7 +84,7 @@ def button_clicked(value):
                     label["text"] = remove_zero_decimal(numA * numB)
                 elif operator == "÷":
                     label["text"] = remove_zero_decimal(numA / numB)
-                
+            
                 clear_all()
 
         elif value in "+-×÷": #500 +, *
@@ -105,7 +106,19 @@ def button_clicked(value):
 
         elif value == "%":
             result = float(label["text"]) / 100
-            label["text"] = remove_zero_decimal(result)           
+            label["text"] = remove_zero_decimal(result)      
+
+        elif value == "√":
+            try:
+                current = float(label["text"])
+                if current < 0:
+                    label["text"] = "Error"
+                else:
+                    result = math.sqrt(current)
+                    label["text"] = remove_zero_decimal(result)
+            except Exception:
+                label["text"] = "Error"
+
         
     else: #digits or .
         if value == ".":
